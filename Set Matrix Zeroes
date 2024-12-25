@@ -1,0 +1,28 @@
+class Solution {
+    public void setMatrixZeroes(int[][] mat) {
+        ArrayList<Integer> is = new ArrayList<>();
+        ArrayList<Integer> js = new ArrayList<>();
+        int n = mat.length, m=mat[0].length;
+        for(int i=0; i<n; i++) {
+            for(int j=0; j<m; j++) {
+                if(mat[i][j]==0) {
+                    if(!is.contains(i)) is.add(i);
+                    if(!js.contains(j)) js.add(j);
+                }
+            }
+        }
+        
+        for(int i=0;i<is.size(); i++) {
+            for(int j=0;j<m; j++) {
+                mat[is.get(i)][j]=0;
+            }
+        }
+        for(int j=0;j<js.size(); j++) {
+            for(int i=0;i<n; i++) {
+                mat[i][js.get(j)]=0;
+            }
+        }
+
+        
+    }
+}
