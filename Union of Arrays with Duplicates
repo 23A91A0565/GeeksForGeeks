@@ -1,0 +1,18 @@
+ // code here
+        HashSet<Integer> set = new HashSet<>();
+        for(int num:a){
+            set.add(num);
+        }
+        for(int num:b){
+            set.add(num);
+        }
+        return set.size();
+-----------or-----------------------
+ ArrayList<Integer>g=new ArrayList<>();
+        for(int i=0;i<a.length;i++)
+            if(!g.contains(a[i]))
+                g.add(a[i]);
+        for(int i=0;i<b.length;i++)
+            if(!g.contains(b[i]))
+                g.add(b[i]);
+        return (g.size());
