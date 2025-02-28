@@ -1,0 +1,35 @@
+class Solution {
+    Stack<Integer>st=new Stack<>();
+    public int evaluate(String[] arr) {
+        for(int i=0;i<arr.length;i++){
+            if(!st.isEmpty()){
+                if(!Character.isDigit(arr[i].charAt(0)) && arr[i].length()==1){
+                    checker(arr[i]);
+                }else{
+                    st.push(Integer.parseInt(arr[i]));
+                }
+            }else{
+                st.push(Integer.parseInt(arr[i]));
+            }
+        }
+        return st.peek();
+    }
+    void checker(String s){
+        int one=st.pop();
+        int two=st.pop();
+        switch(s){
+        case "+":
+        st.push(two+one);
+        break;
+        case "-":
+        st.push(two-one);
+        break;
+        case "*":
+        st.push(two*one);
+        break;
+        case "/":
+        st.push(two/one);
+        break;
+        }
+    }
+}
