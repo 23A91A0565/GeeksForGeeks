@@ -5,7 +5,7 @@ class Solution {
          ArrayList<Integer> a1 =new ArrayList<Integer>();
          for(int i=0;i<arr.length;i++)
          {
-             while(st1.isEmpty()==false&&st1.peek()>=arr[i])
+             while(!st1.isEmpty()&&st1.peek()>=arr[i])
              {
                  st1.pop();
              }
