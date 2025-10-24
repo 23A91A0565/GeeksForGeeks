@@ -1,0 +1,6 @@
+int typeCast(double d) {
+
+    // code here
+    return (int)d;
+    
+}
