@@ -1,6 +1,11 @@
-int typeCast(double d) {
+#include <iostream>
+using namespace std;
 
-    // code here
-    return (int)d;
-    
+int main() {
+    double d;
+    cin >> d;
+    // Typecast and Print
+    int res=(int)d;
+    cout<<res;
+    return 0;
 }
