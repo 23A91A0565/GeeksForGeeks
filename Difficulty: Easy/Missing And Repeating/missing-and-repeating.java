@@ -1,19 +1,19 @@
 class Solution {
     ArrayList<Integer> findTwoElement(int arr[]) {
         // code here
-        int n=arr.length;
+        int freq[]=new int[arr.length+1];
+        for(int i=0;i<arr.length;i++){
+            freq[arr[i]]++;
+        }
+        
         ArrayList<Integer> res=new ArrayList<>();
-        HashSet<Integer> seen=new HashSet<>();
-        for(int i=0;i<n;i++){
-            if(seen.contains(arr[i])){
-                res.add(arr[i]);
-            }
-            else{
-                seen.add(arr[i]);
+        for(int i=1;i<=arr.length;i++){
+            if(freq[i]>=2){
+                res.add(i);
             }
         }
-        for(int i=1;i<=n;i++){
-            if(!seen.contains(i)){
+        for(int i=1;i<=arr.length;i++){
+            if(freq[i]==0){
                 res.add(i);
             }
         }
