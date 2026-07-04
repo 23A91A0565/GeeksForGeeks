@@ -1,0 +1,45 @@
+class Solution {
+    public int waysToIncreaseLCSBy1(String s1, String s2) {
+        // code here
+        int n=s1.length();
+        int m=s2.length();
+        int dp1[][]=new int[n+1][m+1];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(s1.charAt(i)==s2.charAt(j)){
+                    dp1[i+1][j+1]=dp1[i][j]+1;
+                }
+                else{
+                    dp1[i+1][j+1]=Math.max(dp1[i+1][j],dp1[i][j+1]);
+                }
+            }
+        }
+        int dp2[][]=new int[n+1][m+1];
+        for(int i=n-1;i>=0;i--){
+            for(int j=m-1;j>=0;j--){
+                if(s1.charAt(i)==s2.charAt(j)){
+                    dp2[i][j]=dp2[i+1][j+1]+1;
+                }
+                else{
+                    dp2[i][j]=Math.max(dp2[i+1][j],dp2[i][j+1]);
+                }
+            }
+        }
+        int res=0;
+        int max=dp1[n][m];
+        
+        for(int i=0;i<=n;i++){
+            boolean used[]=new boolean[26];
+            
+            for(int j=0;j<m;j++){
+                int ind=s2.charAt(j)-'a';
+                
+                if(dp1[i][j]+dp2[i][j+1]==max && !used[ind]){
+                    used[ind]=true;
+                    res++;
+                }
+            }
+        }
+        return res;
+    }
+}
