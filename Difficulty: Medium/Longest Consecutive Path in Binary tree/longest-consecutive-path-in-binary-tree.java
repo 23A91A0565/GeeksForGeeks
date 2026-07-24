@@ -15,24 +15,25 @@ class Solution {
     static int ans;
     public int longestConsecutive(Node root) {
         // code here
-        if(root==null)return -1;
-        ans=0;
-        solve(root);
+        ans=1;
+        solve(root,1);
         return ans==1?-1:ans;
     }
-    public static int solve(Node root){
-        if(root==null)return 0;
-        int left=solve(root.left);
-        int right=solve(root.right);
+    public static void solve(Node root,int len){
+        if(root==null)return;
         
-        int len=1;
-        if(root.left!=null && root.data+1==root.left.data){
-            len=Math.max(len,1+left);
-        }
-        if(root.right!=null && root.data+1==root.right.data){
-            len=Math.max(len,1+right);
-        }
         ans=Math.max(ans,len);
-        return len;
+        if(root.left!=null){
+            if(root.data+1==root.left.data)
+                solve(root.left,1+len);
+            else
+                solve(root.left,1);
+        }
+        if(root.right!=null){
+            if(root.data+1==root.right.data)
+                solve(root.right,len+1);
+            else
+                solve(root.right,1);
+        }
     }
 }
