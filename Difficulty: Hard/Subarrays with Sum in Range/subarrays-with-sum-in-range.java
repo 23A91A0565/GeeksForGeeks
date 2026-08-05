@@ -1,6 +1,8 @@
 class Solution {
     public int countSubarray(int[] arr, int l, int r) {
         // code here
+        // here we are subsrtracting countAtmost(<=r) and countAtmost(<l)
+        // so we can get the subarrays whose sum is in range from l to r
         return solve(arr,r)-solve(arr,l-1);
     }
     public int solve(int arr[],int k){
